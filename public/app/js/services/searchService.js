@@ -19,6 +19,7 @@
 							query:keyWord,
 							location:urlConfigConstants.currentLatLong,
 							key:urlConfigConstants.googleAPIKey
+							// fields:'results(formatted_address,name)'
 						},
 					}).then(function(response) {
 							def.resolve(response.data);
