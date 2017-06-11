@@ -1,5 +1,25 @@
+ul, li, body, header, h1, h3, h5 {
+	margin:0;
+	padding:0;
+	}
+body {
+	font-family:'Montserrat', sans-serif;
+    background:#f5f5f5;
+    color:#878787; 
+	}
+header {
+	background:#0e0e43; 
+	height:55px;
+	margin-bottom: 22px;
+	} 
+header #logo {
+	width:136px;
+	height:34px;
+	margin:10px 0 0 15px;
+	background-position:-5px -120px;
+}
 #searchInput{
-	background-image:url(././../../assets/images/marker.png);
+	background-image:url(images/marker.png);
 	background-position:10px 10px;
 	background-repeat:no-repeat;
 	width:95%;
@@ -30,12 +50,12 @@
 .searchUL li:hover:not(.header){background-color:#eee}
 
 .marker{
-	background-image:url(../assets/images/marker.png);
+	background-image:url(images/marker.png);
 	background-position:10px 10px;
 	background-repeat:no-repeat;}
 
 .building{
-	background-image:url(../assets/images/building.png);
+	background-image:url(images/hotel.png);
 	background-position:10px 10px;
 	background-repeat:no-repeat;
 }
