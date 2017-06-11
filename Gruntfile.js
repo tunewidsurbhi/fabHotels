@@ -2,7 +2,7 @@ module.exports = function(grunt){
     
     grunt.initConfig({
         pkg:grunt.file.readJSON('package.json'),
-        public: 'public',
+        public: 'angularJS',
 		publicApp: '<%= public %>/app',
 		publicAppJS : '<%= publicApp %>/js',
 		publicAppCss : '<%= publicApp %>/css',

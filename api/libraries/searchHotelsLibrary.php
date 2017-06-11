@@ -1,13 +1,10 @@
 <?php
 
-    // include_once('./constants/hotelConstants.php');
-    // global $hotelConstants;
- 
   class searchHotelsLibrary{
      public function searchHotels($query){
      	// include_once('./constants/hotelConstants.php');
      	// global $hotelConstants;
-     	$hotelConstant = ['Grand_View'=>['name'=>'Hotel Grand View',
+     	$hotelConstants = ['Grand_View'=>['name'=>'Hotel Grand View',
                                    'city'=> 'New Delhi',
                                    'address'=>'Preet Vihar'],
                          'Heritage'=>['name'=>'HoteFl Heritage',
@@ -15,10 +12,10 @@
                                    'address'=>'Udyog Vihar'],
                          'Marine_View'=>['name'=>'Hotel Marine View',
                                    'city'=>'New Delhi',
-                                   'address'=>'Preet Vihar']];                                                 
+                                   'address'=>'Preet Vihar']];   
 
         $results = [];
-     	foreach ($hotelConstant as $hotel => $details) {
+     	foreach ($hotelConstants as $hotel => $details) {
 				if( stripos( $details['name'], $query ) !== false ) {
 				    $results[] = $details;
 				}

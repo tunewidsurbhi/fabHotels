@@ -16,17 +16,17 @@
 
   	    	$scope.getSearchResults = function(){
   	    		var keyword = $scope.keyword;
-  	    		 searchService.getLocationResults(keyword).then(function(data) {
-						$scope.locationsResult = data.results;
-						$scope.resultsReady = !0;
+    	    		searchService.getLocationResults(keyword).then(function(data) {
+    					$scope.locationsResult = data.results;
+    					$scope.resultsReady = !0;
 					}, function() {
-						console.log('OOPS!! something went wrong');
+						console.log('OOPS!! something went wrong with location results');
 					});
-	                    searchService.getHotelResults(keyword).then(function(data) {
-						$scope.hotelsResult = data;
-						$scope.resultsReady = !0;
+              searchService.getHotelResults(keyword).then(function(data) {
+    					$scope.hotelsResult = data;
+    					$scope.resultsReady = !0;
 					}, function() {
-						console.log('OOPS!! something went wrong');
+						console.log('OOPS!! something went wrong with hotel results');
 					});
   	    	}     
   }]);
