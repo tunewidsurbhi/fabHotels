@@ -2,7 +2,6 @@
 
 describe('Controller: searchContoller', function () {
 
-    // Initialize the controller and a mock scope
     beforeEach(inject([
         '$injector',
         function ($injector) {
@@ -13,7 +12,40 @@ describe('Controller: searchContoller', function () {
 			,$httpBackend
 			,initService
 			,$controller
-			,$constant;
+			,$constant
+            ,sampleResponseForLocations = {
+                "html_attributions" : [],
+                "results" : [
+                  {
+                     "formatted_address" : "G- 83 , Vikas Surya Shopping Mall, Sector-3 , Rohini, Mangalam Place, Sector 3, Rohini, Delhi, 110085, India",
+                     "geometry" : {
+                        "location" : {
+                           "lat" : 28.699547,
+                           "lng" : 77.117425
+                        },
+                        "viewport" : {
+                           "northeast" : {
+                              "lat" : 28.7008959802915,
+                              "lng" : 77.11877398029151
+                           },
+                           "southwest" : {
+                              "lat" : 28.6981980197085,
+                              "lng" : 77.11607601970849
+                           }
+                        }
+                     },
+                     "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                     "id" : "d7592f2fce0ca34fdaf5984b9449c03721b24501",
+                     "name" : "Jai Ho! Society",
+                     "place_id" : "ChIJW3yoeeQDDTkRp-4s6kH3Nf0",
+                     "rating" : 5,
+                     "reference" : "CmRbAAAAjBMFwbcLUh1RRndKsySJmTyxaqpjVkvCj2MuwH4oe9tga3-RmvUbGgxbo8iMUf0LXVZA_pSrAvQ5wdw7gv7ExwLHk4vQgNGJOpl7kNYGinWXkLVs7UDR6XaVmzzhZDXSEhB6cbgcgr4gU5TS4okeEeI3GhTOVxU5tf9qTD3IJeQLRIaIgiKEJA",
+                     "types" : [ "point_of_interest", "establishment" ]
+                  }
+           ],
+                 "status" : "OK"
+           }
+           ,sampleResponseForHotels = [{"name":"Deep Jungle Hotel","city":"Munnar","address":"M-10"},{"name":"Hotel Grand View","city":"New Delhi","address":"Preet Vihar"},{"name":"Hotel Heritage","city":"New Delhi","address":"Udyog Vihar"},{"name":"Hotel Ibis","city":"Jaipur","address":"Near Hawa Mehel"},{"name":"Hotel Marine View","city":"New Delhi","address":"Preet Vihar"}];
 
 			beforeEach(module('fab'));
 			beforeEach(module(function($provide){
@@ -26,25 +58,20 @@ describe('Controller: searchContoller', function () {
             $scope = $rootScope.$new();
             $httpBackend = $injector.get('$httpBackend');
 
-            // $httpBackend.expectGET('/PpfApi/getData/conditions_list').respond(200, JSON.stringify(xhrConditionList));
-            // $httpBackend.expectGET('/do/seller/ShowSellerForms/getSellerConstants/all?other_constants=imageConstantsNew,propTypePhotoTypeMapping,QSWPropTypeWise').respond(200, JSON.stringify(_99minMaxData));
-            // $httpBackend.expectGET('/PpfApi/getData/alldata').respond(200, JSON.stringify(xhrDropDwnData));
-            // $httpBackend.expectGET('views/partials/primary-details.html').respond(200, '');
-            $httpBackend.flush();
-
 
             $controller('searchContoller', {
                 '$scope': $scope
             });
-
-            // $constant('')
             
-            var keyword = $scope.keyword;
+            var keyword = 'ho';
+                locationSearchUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='+keyword +'&location=28.7041,77.1025&key=AIzaSyBC7_p3Ag0PHYrD8nN-deOVDk3scjLSb-U',
+                hotelSearchURl = 'http://localhost/fabHotels/api/controllers/searchHotelsController.php?query='+keyword+'&method=searchHotels';
             
-            // $httpBackend.expectGET('http://server/PpfApi/getData/TYPE?rescom=R&mode='+modeVal.id).respond(200, JSON.stringify(pType['R'+modeVal.id]));
-            // $httpBackend.expectGET('http://server/PpfApi/getData/TYPE?rescom=R&mode='+modeVal.id).respond(200, JSON.stringify(pType['R'+modeVal.id]));
-            // $httpBackend.flush();
-            // $scope.$digest();
+               $httpBackend.expectGET(locationUrl).respond(200, JSON.stringify(sampleResponseForLocations));
+               $httpBackend.expectGET(locationUrl).respond(200, JSON.stringify(sampleResponseForHotels));
+           
+            $httpBackend.flush();
+           
     }]));
 
     describe('Initialization',function(){

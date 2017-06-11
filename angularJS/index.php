@@ -7,14 +7,17 @@
   <body>
     <div ng-app="fabHotelSearch"> 
         <div ng-controller="searchController" >
+           <div data-ng-include src="'app/views/header.html'"></div>
 	         <input type="text" ng-model="keyword" id="searchInput" placeholder="Search..."/>
-	         <div ng-if="resultsReady">
+	         <div ng-if="locationResultsReady">
 		         	<ul class='searchUL'>
 		         	    <li class="header marker"> Locations </li>
 		         	    <li ng-repeat="location in locationsResult" class="marker">
 		         	        <b> {{location.name}} </b> {{location.formatted_address}}
 		         	    </li>
 		         	</ul>
+            </div>
+            <div ng-if="hotelResultsReady">  
 		         	<ul class="searchUL">
 		         	    <li class="header building"> Hotels </li>
 		         	    <li ng-repeat="hotel in hotelsResult" class="building">

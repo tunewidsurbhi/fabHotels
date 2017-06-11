@@ -18,13 +18,13 @@
   	    		var keyword = $scope.keyword;
     	    		searchService.getLocationResults(keyword).then(function(data) {
     					$scope.locationsResult = data.results;
-    					$scope.resultsReady = !0;
+    					$scope.locationResultsReady = !0;
 					}, function() {
 						console.log('OOPS!! something went wrong with location results');
 					});
               searchService.getHotelResults(keyword).then(function(data) {
     					$scope.hotelsResult = data;
-    					$scope.resultsReady = !0;
+    					$scope.hotelResultsReady = !0;
 					}, function() {
 						console.log('OOPS!! something went wrong with hotel results');
 					});
